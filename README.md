@@ -1,4 +1,4 @@
-GB Agenda
+#GB Agenda
 Agenda de contatos feita com Ionic, Angular e integrada ao banco de dados em nuvem Firestore do Firebase.
 
 Possui:
