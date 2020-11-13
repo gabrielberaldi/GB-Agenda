@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/contacts-view"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar dados do contato</ion-title>
+    <app-logout-button slot="end"></app-logout-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card lines="full">
+    <ion-card-content>
+      <form [formGroup]="editForm" (ngSubmit)="updateContact(editForm.value)">
+        <!--NOME DO CONTATO-->
+        <ion-item>
+          <ion-label position="floating">Nome:</ion-label>
+          <ion-input type="text" formControlName="firstName" [(ngModel)]="contact.firstName"  required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Nome do meio:</ion-label>
+          <ion-input type="text" formControlName="middleName" [(ngModel)]="contact.middleName" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Sobrenome:</ion-label>
+          <ion-input type="text" formControlName="lastName" [(ngModel)]="contact.lastName" ></ion-input>
+        </ion-item>
+        <!--INFORMAÇÕES IMPORTANTES-->
+        <ion-item lines="none" color="primary">
+          <ion-label>Informações importantes</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Telefone:</ion-label>
+          <ion-input [brmasker]="{phone: true}" type="tel" formControlName="mobileNumber" [(ngModel)]="contact.mobileNumber"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Outro telefone:</ion-label>
+          <ion-input [brmasker]="{phone: true}" type="tel" formControlName="secondMobileNumber" [(ngModel)]="contact.secondMobileNumber"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Email:</ion-label>
+          <ion-input type="email" formControlName="email" [(ngModel)]="contact.email" class="no-text-transform"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Data de aniversário:</ion-label>
+          <ion-input [brmasker]="{mask:'00/00/0000', len:10}" tyep="text" formControlName="birthday" [(ngModel)]="contact.birthday"></ion-input>
+        </ion-item>
+        <!--Informações do trabalho-->
+        <ion-item lines="none" color="primary">
+          <ion-label>Informações do trabalho</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Título do trabalho:</ion-label>
+          <ion-input type="text" formControlName="jobTitle" [(ngModel)]="contact.jobTitle"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Departamento:</ion-label>
+          <ion-input type="text" formControlName="department" [(ngModel)]="contact.department"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Nome da empresa:</ion-label>
+          <ion-input type="text" formControlName="companyName" [(ngModel)]="contact.companyName"></ion-input>
+        </ion-item>
+        <!--ENDEREÇO-->
+        <ion-item lines="none" color="primary">
+          <ion-label>Endereço</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Rua:</ion-label>
+          <ion-input type="text" formControlName="street" [(ngModel)]="contact.street"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Cidade:</ion-label>
+          <ion-input type="text" formControlName="city" [(ngModel)]="contact.city"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Estado:</ion-label>
+          <ion-input type="text" formControlName="state" [(ngModel)]="contact.state"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">País:</ion-label>
+          <ion-input type="text" formControlName="country" [(ngModel)]="contact.country"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">CEP:</ion-label>
+          <ion-input [brmasker]="{mask:'00.000-000', len:10}"  type="text" formControlName="zipCode" [(ngModel)]="contact.zipCode"></ion-input>
+        </ion-item>
+        
+
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" expand="block" [disabled]="!editForm.valid">Salvar alterações</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="danger" (click)="cancel()">Cancelar</ion-button>
+          </ion-col>
+        </ion-row>
+
+      </form>
+      
+      
+    </ion-card-content>
+  </ion-card> 
+</ion-content>

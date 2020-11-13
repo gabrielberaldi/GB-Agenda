@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Faça login:</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-top>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col  >
+        <form [formGroup]="formValidators" (ngSubmit)="loginUser(formValidators.value)">
+
+          <ion-item lines="full">
+            <ion-icon name="mail" color="primary" slot="start" ></ion-icon>
+            <ion-input type="email" formControlName="email" placeholder="Email" clearInput required autofocus="true"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-icon name="lock-closed" color="primary" slot="start" ></ion-icon>
+            <ion-input type="password" formControlName="password" placeholder="Senha" clearInput required></ion-input>
+          </ion-item> 
+
+          <ion-button type="submit" expand="block" [disabled]="!formValidators.valid">Entrar</ion-button>
+          <ion-button expand="block" routerLink="/sign-up" color="light">Crie uma nova conta</ion-button>
+          <ion-button routerLink="/forgot-password" expand="block">Esqueceu a senha ?</ion-button> 
+          
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

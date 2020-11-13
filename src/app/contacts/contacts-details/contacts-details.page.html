@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="contacts-view"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dados do contato</ion-title>
+    <app-logout-button slot="end"></app-logout-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card lines="full">
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nome:</ion-label>
+        <ion-input type="text"  [(ngModel)]="contact.firstName" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nome do meio:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.middleName" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Sobrenome:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.lastName" readonly></ion-input>
+      </ion-item>
+      <!--INFORMAÇÕES IMPORTANTES-->
+      <ion-item lines="none" color="primary">
+        <ion-label>Informações importantes</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">
+          Telefone:
+        </ion-label>
+        <ion-input type="tel" [(ngModel)]="contact.mobileNumber" readonly></ion-input>
+        <ion-fab vertical="center" horizontal="center" *ngIf="contact.mobileNumber">
+          <ion-fab-button size="small">
+            <ion-icon md="chevron-forward-circle-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="end">
+            <ion-fab-button href="tel:{{contact.mobileNumber}}">
+              <ion-icon name="call-outline" tappable></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button href="sms:{{contact.mobileNumber}}" color="warning">
+              <ion-icon name="chatbox-ellipses-outline" tappable></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="success" href="https://wa.me/{{contact.mobileNumber}}" target="blank">
+              <ion-icon name="logo-whatsapp" tappable></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Outro telefone:</ion-label>
+        <ion-input [brmasker]="{phone: true}" type="tel" [(ngModel)]="contact.secondMobileNumber" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email:</ion-label>
+        <ion-input type="email"  [(ngModel)]="contact.email" class="no-text-transform" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Data de aniversário:</ion-label>
+        <ion-input [brmasker]="{mask:'00/00/0000', len:10}" type="text" [(ngModel)]="contact.birthday" readonly></ion-input>
+      </ion-item>
+      <!--Informações do trabalho-->
+      <ion-item lines="none" color="primary">
+        <ion-label>Informações do trabalho</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Título do trabalho:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.jobTitle" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Departamento:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.department" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nome da empresa:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.companyName" readonly></ion-input>
+      </ion-item>
+      <!--ENDEREÇO-->
+      <ion-item lines="none" color="primary">
+        <ion-label>Endereço</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Rua:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.street" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cidade:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.city" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Estado:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.state" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">País:</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.country" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">CEP:</ion-label>
+        <ion-input [brmasker]="{mask:'00.000-000', len:10}"  type="text" [(ngModel)]="contact.zipCode" readonly></ion-input>
+      </ion-item>
+
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button (click)="deleteContact()" color="danger" title="Excluir contato">
+          <ion-icon name="trash-bin-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
